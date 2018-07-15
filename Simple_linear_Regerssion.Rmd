@@ -1,0 +1,32 @@
+---
+title: "Simple_Linear_Regression"
+author: "HARSHITHA MEKALA"
+date: "15 July 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# loading the packages required
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+# spliting the data(without repetition)
+```{r}
+adv = read.csv("E://Machine Learning/class_files/Advertising.csv")
+adv_training = adv[sample(seq(1,nrow(adv)), 162),]
+adv_testing = adv[sample(seq(1,nrow(adv)), 38),]
+```
+
+# Fit a model
+```{r}
+adv_model = lm(sales~., data=adv_training)
+adv_model
+summary(adv_model)
+```
+
